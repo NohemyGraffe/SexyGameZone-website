@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SexyGameZone – Smart Games. Sexy Design.</title>
+    <meta
+      name="description"
+      content="SexyGameZone builds elegant, playful mobile games like Sexy Sudoku—smart puzzles with sleek, neon design."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0b0f;
+        --pink: #ff3fa4;
+        --violet: #b266ff;
+        --cyan: #00d1ff;
+        --text: #f5f5f5;
+        --muted: #b7b7c0;
+        --card: #141419;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 14px;
+        border: 1px solid #ffffff20;
+        background: #ffffff08;
+        backdrop-filter: saturate(120%);
+        transition: 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px #0006;
+      }
+      .btn.primary {
+        background: linear-gradient(
+          90deg,
+          var(--pink),
+          var(--violet),
+          var(--cyan)
+        );
+        border: 0;
+        color: #04030a;
+      }
+      .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid #ffffff20;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      header {
+        position: relative;
+        overflow: hidden;
+      }
+      .halo {
+        position: absolute;
+        inset: -30%;
+        background: radial-gradient(
+            40% 40% at 25% 35%,
+            #ff3fa420 0%,
+            transparent 60%
+          ),
+          radial-gradient(45% 45% at 75% 65%, #00d1ff20 0%, transparent 60%);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: radial-gradient(
+            110% 110% at 20% 20%,
+            var(--pink),
+            transparent 60%
+          ),
+          radial-gradient(110% 110% at 80% 80%, var(--cyan), transparent 60%);
+        box-shadow: 0 0 32px #ff3fa430, 0 0 32px #00d1ff30 inset;
+      }
+      .brand .name {
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+      .hero {
+        padding: 72px 0 48px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(28px, 6vw, 56px);
+        margin: 10px 0;
+        background: linear-gradient(
+          90deg,
+          var(--pink),
+          var(--violet),
+          var(--cyan)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero p {
+        color: var(--muted);
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .hero .cta {
+        margin-top: 22px;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      section {
+        padding: 48px 0;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid #ffffff12;
+        border-radius: 18px;
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+      .card h3 {
+        margin: 6px 0 4px;
+      }
+      .tag {
+        font-size: 12px;
+        color: #ffffffb0;
+        border: 1px solid #ffffff20;
+        border-radius: 999px;
+        padding: 4px 10px;
+        display: inline-block;
+      }
+      .divider {
+        height: 1px;
+        background: #ffffff10;
+        margin: 28px 0;
+      }
+      .list {
+        display: flex;
+        gap: 12px;
+      }
+      .list a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border: 1px solid #ffffff20;
+        border-radius: 14px;
+        background: #ffffff08;
+      }
+      footer {
+        padding: 24px 0;
+        color: #9aa;
+        font-size: 14px;
+      }
+      .footer-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+        align-items: center;
+      }
+      @media (min-width: 680px) {
+        .footer-grid {
+          grid-template-columns: auto 1fr auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="halo"></div>
+      <div class="container">
+        <nav class="nav">
+          <div class="brand">
+            <div class="logo"></div>
+            <div class="name">SexyGameZone</div>
+          </div>
+          <div class="list" aria-label="social">
+            <a href="https://tiktok.com/@playsgz" target="_blank" rel="noopener"
+              >TikTok</a
+            >
+            <a
+              href="https://instagram.com/playsgz"
+              target="_blank"
+              rel="noopener"
+              >Instagram</a
+            >
+            <a href="https://x.com/playsgz" target="_blank" rel="noopener">X</a>
+          </div>
+        </nav>
+
+        <div class="hero">
+          <span class="pill">Smart games • Sexy design</span>
+          <h1>SexyGameZone</h1>
+          <p>
+            Elegant, playful mobile games that tease your mind. We reimagine
+            classics like Sudoku and Chess with sleek neon visuals and feel-good
+            interactions.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#games">See our games</a>
+            <a class="btn" href="/privacy.html">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="games">
+        <h2>Our Games</h2>
+        <div class="cards">
+          <article class="card">
+            <span class="tag">Coming soon</span>
+            <h3>Sexy Sudoku</h3>
+            <p>
+              Classic 9×9 Sudoku with smooth neon UI, notes, hints, daily
+              challenge and a calm, elegant vibe.
+            </p>
+            <div class="cta"><a class="btn" href="#">Play Store (soon)</a></div>
+          </article>
+          <article class="card">
+            <span class="tag">Concept</span>
+            <h3>Sexy Chess</h3>
+            <p>
+              Timeless strategy with a minimalist, flirty look—ranked play,
+              puzzles, and delightful animations.
+            </p>
+            <div class="cta"><a class="btn" href="#">Learn more</a></div>
+          </article>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          SexyGameZone is a boutique mobile studio crafting smart games with
+          sleek, neon-glow aesthetics. We build calm, confident play
+          experiences—PG-13, elegant, and satisfying.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>© <span id="y"></span> SexyGameZone</div>
+        <div></div>
+        <div class="list">
+          <a href="/privacy.html">Privacy</a>
+          <a href="mailto:support@sexygamezone.com">support@sexygamezone.com</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
