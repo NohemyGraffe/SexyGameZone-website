@@ -7,6 +7,8 @@
   --muted: #b7b7c0;
   --card: #141419;
 }
+
+/* Base */
 * {
   box-sizing: border-box;
 }
@@ -22,11 +24,20 @@ a {
   color: inherit;
   text-decoration: none;
 }
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px;
 }
+
+/* Buttons */
 .btn {
   display: inline-block;
   padding: 12px 18px;
@@ -45,6 +56,8 @@ a {
   border: 0;
   color: #04030a;
 }
+
+/* Chips / pills */
 .pill {
   padding: 6px 12px;
   border-radius: 999px;
@@ -54,6 +67,8 @@ a {
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
+
+/* Header + halo background */
 header {
   position: relative;
   overflow: hidden;
@@ -63,7 +78,10 @@ header {
   inset: -30%;
   background: radial-gradient(40% 40% at 25% 35%, #ff3fa420 0%, transparent 60%),
     radial-gradient(45% 45% at 75% 65%, #00d1ff20 0%, transparent 60%);
+  pointer-events: none; /* allow clicks on content above */
 }
+
+/* Nav */
 .nav {
   display: flex;
   align-items: center;
@@ -91,6 +109,23 @@ header {
   font-weight: 700;
   letter-spacing: 0.4px;
 }
+
+.list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #ffffff20;
+  border-radius: 14px;
+  background: #ffffff08;
+}
+
+/* Hero */
 .hero {
   padding: 72px 0 48px;
   text-align: center;
@@ -115,6 +150,8 @@ header {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* Sections / cards */
 section {
   padding: 48px 0;
 }
@@ -147,19 +184,8 @@ section {
   background: #ffffff10;
   margin: 28px 0;
 }
-.list {
-  display: flex;
-  gap: 12px;
-}
-.list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border: 1px solid #ffffff20;
-  border-radius: 14px;
-  background: #ffffff08;
-}
+
+/* Footer */
 footer {
   padding: 24px 0;
   color: #9aa;
@@ -177,59 +203,74 @@ footer {
   }
 }
 
-/* Make images scale on small screens (future-proof) */
-img,
-svg,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Let the social links wrap instead of overflowing */
-.list {
-  flex-wrap: wrap;
-}
-
-/* Mobile tweaks */
+/* -------- Mobile tweaks -------- */
 @media (max-width: 680px) {
   .container {
     padding: 16px;
   }
 
+  /* Nav stacks: no overlap with social links */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .brand {
+    width: 100%;
+    justify-content: center;
+  }
+  .brand .name {
+    font-size: 16px;
+  }
+  .list {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+  .list a {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
   header {
     overflow: visible;
   }
-  /* Reduce the big glow so it doesn’t crop/overflow on phones */
   .halo {
-    inset: -45%;
-  }
+    inset: -60%;
+  } /* smaller, keeps glow without covering content */
 
   .hero {
     padding: 56px 0 32px;
   }
   .hero h1 {
     margin: 8px 0;
+    font-size: 32px;
   }
   .hero p {
     font-size: 15px;
     line-height: 1.6;
-    padding: 0 4px;
+    padding: 0 12px;
+    color: #c9c9d3;
   }
 
-  /* Stack CTAs and make them easy to tap */
+  /* Buttons: full-width for tapability */
   .hero .cta {
+    flex-direction: column;
+    align-items: stretch;
     gap: 10px;
+    margin-top: 24px;
   }
   .btn {
     width: 100%;
     text-align: center;
+    font-size: 15px;
     padding: 14px 16px;
   }
 
-  /* Cards: ensure they can go single column comfortably */
+  /* Single-column cards */
   .cards {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
   }
   .card {
     padding: 16px;
@@ -241,8 +282,10 @@ video {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  footer .list {
-    justify-content: flex-start;
+
+  /* Section spacing a bit tighter */
+  section {
+    padding: 36px 0;
   }
 }
 
@@ -259,26 +302,4 @@ video {
     font-size: 11px;
     padding: 5px 10px;
   }
-}
-
-@media (max-width: 680px) {
-  .hero p,
-  p,
-  li {
-    color: #c9c9d3;
-  }
-}
-
-@media (max-width: 680px) {
-  section {
-    padding: 36px 0;
-  }
-}
-
-.halo {
-  position: absolute;
-  inset: -30%;
-  background: radial-gradient(40% 40% at 25% 35%, #ff3fa420 0%, transparent 60%),
-    radial-gradient(45% 45% at 75% 65%, #00d1ff20 0%, transparent 60%);
-  pointer-events: none; /* ✅ add this line */
 }
