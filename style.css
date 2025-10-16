@@ -15,10 +15,12 @@
 html,
 body {
   margin: 0;
+  padding: 0;
   background: var(--bg);
   color: var(--text);
   font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial,
     sans-serif;
+  overflow-x: hidden; /* ✅ prevent horizontal scroll */
 }
 a {
   color: inherit;
@@ -72,13 +74,21 @@ video {
 header {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .halo {
   position: absolute;
-  inset: -30%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150vw;
+  height: 150vw;
   background: radial-gradient(40% 40% at 25% 35%, #ff3fa420 0%, transparent 60%),
     radial-gradient(45% 45% at 75% 65%, #00d1ff20 0%, transparent 60%);
-  pointer-events: none; /* allow clicks on content above */
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Nav */
@@ -87,6 +97,10 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  z-index: 2;
 }
 .brand {
   display: flex;
@@ -114,6 +128,7 @@ header {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .list a {
   display: inline-flex;
@@ -129,6 +144,8 @@ header {
 .hero {
   padding: 72px 0 48px;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 .hero h1 {
   font-size: clamp(28px, 6vw, 56px);
@@ -154,6 +171,7 @@ header {
 /* Sections / cards */
 section {
   padding: 48px 0;
+  text-align: center;
 }
 .cards {
   display: grid;
@@ -190,12 +208,14 @@ footer {
   padding: 24px 0;
   color: #9aa;
   font-size: 14px;
+  text-align: center;
 }
 .footer-grid {
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;
   align-items: center;
+  justify-items: center;
 }
 @media (min-width: 680px) {
   .footer-grid {
@@ -209,14 +229,13 @@ footer {
     padding: 16px;
   }
 
-  /* Nav stacks: no overlap with social links */
+  /* Nav stacks */
   .nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
   }
   .brand {
-    width: 100%;
     justify-content: center;
   }
   .brand .name {
@@ -232,12 +251,14 @@ footer {
     padding: 8px 12px;
   }
 
-  header {
-    overflow: visible;
-  }
+  /* Glow stays centered and static */
   .halo {
-    inset: -60%;
-  } /* smaller, keeps glow without covering content */
+    width: 200vw;
+    height: 200vw;
+    top: -50vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   .hero {
     padding: 56px 0 32px;
@@ -253,7 +274,7 @@ footer {
     color: #c9c9d3;
   }
 
-  /* Buttons: full-width for tapability */
+  /* Buttons full-width */
   .hero .cta {
     flex-direction: column;
     align-items: stretch;
@@ -267,7 +288,7 @@ footer {
     padding: 14px 16px;
   }
 
-  /* Single-column cards */
+  /* Cards single column */
   .cards {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -277,13 +298,6 @@ footer {
     border-radius: 16px;
   }
 
-  /* Footer layout */
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  /* Section spacing a bit tighter */
   section {
     padding: 36px 0;
   }
